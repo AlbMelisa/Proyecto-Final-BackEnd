@@ -7,6 +7,7 @@ const userPlanSchema = new Schema({
   email: String, 
   infoUno: String,
   infoDos: String,
-  infoTres: String
+  infoTres: String,
+  role:String
 })
 module.exports = model('userPlan',userPlanSchema)
