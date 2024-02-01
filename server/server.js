@@ -6,6 +6,7 @@ const {connectionDB} = require('../database/planUnoDB')
 const addUserPlan = require('../router/planUnoRoute')
 
 app.use(express.json())
+
 //declaro app.(metodo)(ruta,funcion)
 app.use('/',addUserPlan)
 

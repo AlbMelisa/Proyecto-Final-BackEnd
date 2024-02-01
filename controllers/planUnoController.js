@@ -11,7 +11,8 @@ const addUserPlan = async (request,response)=>{
     email,
     infoUno,
     infoDos,
-    infoTres
+    infoTres,
+    role
    })
   
    await newUserPlan.save()
