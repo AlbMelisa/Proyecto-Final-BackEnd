@@ -2,7 +2,7 @@ const userPlan = require('../models/planUnoModels')
 
 const addUserPlan = async (request,response)=>{  
   try {
-   const { nombre, apellido, telefono, email, infoUno, infoDos, infoTres , role}  = request.body
+   const { nombre, apellido, telefono, email, infoUno, infoDos, infoTres }  = request.body
   
    const newUserPlan = new userPlan({
     nombre,
@@ -11,8 +11,7 @@ const addUserPlan = async (request,response)=>{
     email,
     infoUno,
     infoDos,
-    infoTres,
-    role
+    infoTres
    })
   
    await newUserPlan.save()
