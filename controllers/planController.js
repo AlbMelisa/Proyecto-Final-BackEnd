@@ -1,6 +1,6 @@
-const userPlan = require('../models/planUnoModels')
+const userPlan = require('../models/Plan')
 
-const addUserPlan = async (request,response)=>{  
+const addUserPlan = async (request,response) => {  
   try {
    const { nombre, apellido, telefono, email, infoUno, infoDos, infoTres }  = request.body
   
