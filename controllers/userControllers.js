@@ -1,16 +1,19 @@
 const user = require('../models/User')
 const bcrypt = require('bcrypt')
+const jwt = require ('jsonwebtoken') 
+require('dotenv').config()
 
 const addUser = async(request,response) =>{
   try {
-    const {nombre,apellido,email,clave,role} = request.body
+    const {nombre,apellido,email,clave,role, refreshToken} = request.body
 
     const newUser = new user({
       nombre,
       apellido,
       email,
       clave,
-      role
+      role,
+      refreshToken
     })
      const saltRounds = 10
      const salt = bcrypt.genSaltSync(saltRounds)
@@ -32,4 +35,5 @@ const getAllUsers = async (request,response) => {
     response.status(400).json({message:'no se puedieron encontrar usuarios'})
   }
 }
+
 module.exports = {addUser,getAllUsers}
