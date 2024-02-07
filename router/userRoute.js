@@ -1,8 +1,9 @@
 const { Router } = require('express')
 const route = Router()
-const {addUser, getAllUsers} = require('../controllers/userControllers')
+const {addUser, getAllUsers, getUser} = require('../controllers/userControllers')
+const { verifyToken } = require('../middleware/tokenValidation')
 
 route.post('/user',addUser)
-route.get('/user',getAllUsers)
+route.get('/user',verifyToken,getAllUsers)
 
 module.exports = route
