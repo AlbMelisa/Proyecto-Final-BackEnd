@@ -16,11 +16,13 @@ const loginUser = require('./router/authRoute')
 const refreshToken = require('./router/refreshRoute')
 const handleLogout = require('./router/logoutRoute')
 const cookieParser = require('cookie-parser')
+
 app.use(credentials)
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
 //declaro app.(metodo)(ruta,funcion)
+
 app.use('/',addUserPlan)
 app.use('/',addProducto)
 app.use('/',getProductos)

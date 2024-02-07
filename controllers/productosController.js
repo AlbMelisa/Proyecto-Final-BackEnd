@@ -2,14 +2,13 @@ const productos = require('../models/productos')
 
 const addProductos = async(request,response) => {
   try {
-    const {nombre,precio,imagen,descripcion,id} = request.body
+    const {nombre,precio,imagen,descripcion} = request.body
 
     const newProduct = new productos({
       nombre,
       precio,
       imagen,
-      descripcion,
-      id
+      descripcion
     })
 
     await newProduct.save()

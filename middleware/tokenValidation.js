@@ -12,7 +12,8 @@ const verifyToken = (request,response,next) => {
     if(error){
       return response.status(400).json(error)
     }
-    response.status(200).json(decoded)
+    next()
   })
+
 }
 module.exports = {verifyToken}

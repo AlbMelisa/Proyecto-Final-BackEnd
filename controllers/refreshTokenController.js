@@ -23,7 +23,7 @@ const handleRefreshToken = async(request,response)=>{
         role: decoded.role, 
         nombre: decoded.nombre
       },process.env.ACCESS_TOKEN_SECRET,
-      {expiresIn:'30s'})
+      {expiresIn:'15m'})
       response.json({accessToken})
       }
     )
