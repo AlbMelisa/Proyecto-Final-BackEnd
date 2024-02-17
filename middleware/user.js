@@ -1,8 +1,7 @@
-const { Router } = require('express')
+const {Router} = require('express')
 const route = Router()
-const {addUser, getAllUsers, getUser} = require('../controllers/userControllers')
 const {body} = require('express-validator')
-const { verifyToken } = require('../middleware/tokenValidation')
+const {addUser} = require('../controllers/userControllers')
 
 route.post('/user',
 body('nombre').trim().notEmpty().withMessage('El nombre no puede esta vacio').isLength({min:3 , max:50}),
@@ -12,7 +11,3 @@ body('clave').trim().notEmpty().withMessage('El clave no puede esta vacio').isLe
 body('role').trim().notEmpty().withMessage('El role no puede esta vacio').isLength({min:4 , max:50}),
 body('refreshToken').trim().notEmpty().withMessage('El refreshToken no puede esta vacio').isLength({min:4 , max:50}),
 addUser)
-
-route.get('/user',verifyToken,getAllUsers)
-
-module.exports = route
