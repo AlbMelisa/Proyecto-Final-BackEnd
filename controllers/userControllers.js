@@ -35,25 +35,21 @@ const getAllUsers = async (request,response) => {
     response.status(400).json({message:'no se puedieron encontrar usuarios'})
   }
 }
-const deleteUser = async (request, res) => {
-  try {
-    const User = await user.findById(req.params.id);
+const deleteUser = async (req, res) => {
+  const userId = req.params.id;
   
-    if (User === null) {
-      res.status(404);
-      return res.json({ message: "Usuario no encontrado" });
+    try {
+      const User = await user.findByIdAndDelete(userId);
+  
+      if (!User) {
+        return res.status(404).json({ message: 'Usuario no encontrado' });
+      }
+  
+      res.status(200).json({ message: 'Usuario eliminado correctamente' });
+    } catch (error) {
+      res.status(500).json({ error: 'Error al eliminar el usuario' });
     }
-  
-    const idUser = req.params.id;
-  
-    const filters = { idUser };
-    await alumno.deleteOne(filters);
-    
-    response.status(200).json({message:'Usuario eliminado con exito encontrar usuarios'})
-  } catch (error) {
-    response.status(400).json({message:'no se pudo encontrar el usuario'})
-  }
-};
+  };
 const actualizarUsuario = async (req, res) => {
 
   const usuario = await Alumno.findById(req.params.id);
@@ -70,4 +66,4 @@ const actualizarUsuario = async (req, res) => {
 
 
 
-module.exports = {addUser,getAllUsers,deleteUser}
+module.exports = {addUser, getAllUsers, deleteUser}
