@@ -16,6 +16,7 @@ const loginUser = require('./router/authRoute')
 const refreshToken = require('./router/refreshRoute')
 const handleLogout = require('./router/logoutRoute')
 const  deleteUser  = require('./router/userRoute')
+const updateUser = require('./router/userRoute')
 const cookieParser = require('cookie-parser')
 
 app.use(credentials)
@@ -28,6 +29,7 @@ app.use(cookieParser())
 app.use('/',addUser)
 app.use('/',getAllUsers)
 app.use('/',deleteUser)
+app.use('/',updateUser)
 
 //Clase
 app.use('/',addClase)
