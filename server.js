@@ -15,6 +15,7 @@ const addClase = require('./router/claseRoute')
 const loginUser = require('./router/authRoute')
 const refreshToken = require('./router/refreshRoute')
 const handleLogout = require('./router/logoutRoute')
+const  deleteUser  = require('./router/userRoute')
 const cookieParser = require('cookie-parser')
 
 app.use(credentials)
@@ -23,13 +24,25 @@ app.use(express.json())
 app.use(cookieParser())
 //declaro app.(metodo)(ruta,funcion)
 
-app.use('/',addUserPlan)
-app.use('/',addProducto)
-app.use('/',getProductos)
+//User
 app.use('/',addUser)
 app.use('/',getAllUsers)
+app.use('/',deleteUser)
+
+//Clase
 app.use('/',addClase)
+
+//Plan
+app.use('/',addUserPlan)
+
+//Productos
+app.use('/',addProducto)
+app.use('/',getProductos)
+
+//Token
 app.use('/',loginUser)
 app.use('/',refreshToken)
 app.use('/',handleLogout)
+
+
 app.listen(process.env.PORT,()=> console.log(`escuchando en el puerto ${process.env.PORT}`))

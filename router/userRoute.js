@@ -3,6 +3,7 @@ const route = Router()
 const {addUser, getAllUsers, getUser} = require('../controllers/userControllers')
 const {body} = require('express-validator')
 const { verifyToken } = require('../middleware/tokenValidation')
+const {deleteUser} = require('../controllers/userControllers')
 
 route.post('/user',
 body('nombre').trim().notEmpty().withMessage('El nombre no puede esta vacio').isLength({min:3 , max:50}),
@@ -14,5 +15,6 @@ body('refreshToken').trim().notEmpty().withMessage('El refreshToken no puede est
 addUser)
 
 route.get('/user',verifyToken,getAllUsers)
+route.delete('/user',deleteUser)
 
 module.exports = route
