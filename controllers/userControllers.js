@@ -28,7 +28,7 @@ const addUser = async(request,response) =>{
      await newUser.save()
      response.status(200).json({message:'Usuario creado exitosamente'})
     } catch (error) {
-      response.status(400).json({message:'No se creo'})
+      response.status(400).json({message:'No se creo correctamente'})
 
   }
 }
