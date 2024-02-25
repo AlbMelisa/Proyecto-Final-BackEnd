@@ -17,6 +17,8 @@ const refreshToken = require('./router/refreshRoute')
 const handleLogout = require('./router/logoutRoute')
 const  deleteUser  = require('./router/userRoute')
 const updateUser = require('./router/userRoute')
+const addAlumnos = require('./router/claseRoute')
+const getClases = require('./router/claseRoute')
 const cookieParser = require('cookie-parser')
 
 app.use(credentials)
@@ -33,6 +35,8 @@ app.use('/',updateUser)
 
 //Clase
 app.use('/',addClase)
+app.use('/',getClases)
+app.use('/',addAlumnos)
 
 //Plan
 app.use('/',addUserPlan)
