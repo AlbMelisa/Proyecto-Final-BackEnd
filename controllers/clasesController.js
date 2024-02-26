@@ -1,11 +1,11 @@
-const clasesModel = require('../models/clases')
+const clases = require('../models/clases')
 
 const addClase = async (request,response) => {  
   try {
    const { descripcion, profesor, fecha, hora , alumnos}  = request.body
    const alumnosArray = alumnos.map(alumno => ({ nombre: alumno.nombre }));
 
-   const clase = new clasesModel({
+   const clase = new clases({
     descripcion,
     profesor,
     fecha,
@@ -24,7 +24,7 @@ const addAlumnos = async (request,response)=>{
   const { alumnos } = request.body; 
   
   try {
-    const clase = await clasesModel.findById(claseId);
+    const clase = await clases.findById(claseId);
 
     if (!clase) {
       return response.status(404).json({ message: 'La clase no existe' });
@@ -44,7 +44,7 @@ const addAlumnos = async (request,response)=>{
 }
 const getClases = async (request,response) => {
   try {
-    const clase = clasesModel.find({})
+    const clase = await clases.find({})
     if(!clase){
       return response.status(404).json({message: "error al ver las clases"})
     }

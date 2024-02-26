@@ -42,7 +42,7 @@ const getAllUsers = async (request,response) => {
 }
 const deleteUser = async (req, res) => {
   const {id} = req.params
-  
+
   try {
       const User = await user.findByIdAndDelete(id);
   
