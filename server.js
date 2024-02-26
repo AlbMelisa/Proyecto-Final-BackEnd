@@ -18,6 +18,7 @@ const handleLogout = require('./router/logoutRoute')
 const  deleteUser  = require('./router/userRoute')
 const updateUser = require('./router/userRoute')
 const cookieParser = require('cookie-parser')
+const  getClases  = require('./controllers/clasesController')
 
 app.use(credentials)
 app.use(cors(corsOptions))
@@ -33,6 +34,7 @@ app.use('/',updateUser)
 
 //Clase
 app.use('/',addClase)
+app.use('/', getClases)
 
 //Plan
 app.use('/',addUserPlan)
