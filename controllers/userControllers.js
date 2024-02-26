@@ -41,8 +41,8 @@ const getAllUsers = async (request,response) => {
   }
 }
 const deleteUser = async (req, res) => {
-  
   const {id} = req.params
+  
   try {
       const User = await user.findByIdAndDelete(id);
   
@@ -55,7 +55,8 @@ const deleteUser = async (req, res) => {
       res.status(500).json({ error: 'Error al eliminar el usuario' });
     }
   };
-  const updateUser = async (request, response) => {
+
+const updateUser = async (request, response) => {
     const {id} = request.params;
     const { nombre, apellido, email, clave, role } = request.body;
 
