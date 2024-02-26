@@ -37,7 +37,7 @@ app.use('/',updateUser)
 //Clase
 app.use('/',addClase)
 app.use('/',getClases)
-
+app.use('/',getClases)
 //Plan
 app.use('/',addUserPlan)
 

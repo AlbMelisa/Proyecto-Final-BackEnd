@@ -44,7 +44,7 @@ const addAlumnos = async (request,response)=>{
 }
 const getClases = async (request,response) => {
   try {
-    const clase = clasesModel.find({})
+    const clase = await clasesModel.find({})
     if(!clase){
       return response.status(404).json({message: "error al ver las clases"})
     }
