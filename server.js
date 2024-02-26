@@ -20,6 +20,7 @@ const updateUser = require('./router/userRoute')
 const addAlumnos = require('./router/claseRoute')
 const getClases = require('./router/claseRoute')
 const cookieParser = require('cookie-parser')
+const  getClases  = require('./controllers/clasesController')
 
 app.use(credentials)
 app.use(cors(corsOptions))
@@ -36,8 +37,7 @@ app.use('/',updateUser)
 //Clase
 app.use('/',addClase)
 app.use('/',getClases)
-app.use('/',addAlumnos)
-
+app.use('/',getClases)
 //Plan
 app.use('/',addUserPlan)
 
