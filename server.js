@@ -19,8 +19,12 @@ const deleteUser  = require('./router/userRoute')
 const updateUser = require('./router/userRoute')
 const addAlumnos = require('./router/claseRoute')
 const getClases = require('./router/claseRoute')
+const getPlan = require('./router/planRoute')
+const deletePlan = require('./router/planRoute')
+const deleteClase = require('./router/claseRoute')
+const updateClase = require('./router/claseRoute')
+const updatePlan = require('./router/planRoute')
 const cookieParser = require('cookie-parser')
-const  getClases  = require('./controllers/clasesController')
 
 app.use(credentials)
 app.use(cors(corsOptions))
@@ -37,9 +41,15 @@ app.use('/',updateUser)
 //Clase
 app.use('/',addClase)
 app.use('/',getClases)
-app.use('/',getClases)
+app.use('/',deleteClase)
+app.use('/',updateClase)
+app.use('/',addAlumnos)
+
 //Plan
 app.use('/',addUserPlan)
+app.use('/',getPlan)
+app.use('/',deletePlan)
+app.use('/',updatePlan)
 
 //Productos
 app.use('/',addProducto)

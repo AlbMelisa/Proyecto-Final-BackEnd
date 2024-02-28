@@ -58,7 +58,7 @@ const deleteUser = async (req, res) => {
 
 const updateUser = async (request, response) => {
     const {id} = request.params;
-    const { nombre, apellido, email, clave, role } = request.body;
+    const { nombre, apellido, email, clave, role, refreshToken } = request.body;
 
     try {
       const User = await user.findById(id);
@@ -77,7 +77,8 @@ const updateUser = async (request, response) => {
         User.clave = hash;
       }
       if (role) User.role = role;
-  
+      if (refreshToken) User.refreshToken = refreshToken;
+
       await User.save();
   
       response.status(200).json({ message: 'Usuario actualizado correctamente' });
