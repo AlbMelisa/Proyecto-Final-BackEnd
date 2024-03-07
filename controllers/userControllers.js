@@ -42,7 +42,7 @@ const getAllUsers = async (request,response) => {
 }
 const deleteUser = async (req, res) => {
   const {id} = req.params
-  
+
   try {
       const User = await user.findByIdAndDelete(id);
   
@@ -58,7 +58,7 @@ const deleteUser = async (req, res) => {
 
 const updateUser = async (request, response) => {
     const {id} = request.params;
-    const { nombre, apellido, email, clave, role } = request.body;
+    const { nombre, apellido, email, clave, role, refreshToken } = request.body;
 
     try {
       const User = await user.findById(id);
@@ -73,16 +73,17 @@ const updateUser = async (request, response) => {
       if (clave) {
         const saltRounds = 10;
         const salt = bcrypt.genSaltSync(saltRounds);
-        const hash = bcrypt.hashSync(password, salt);
+        const hash = bcrypt.hashSync(clave, salt);
         User.clave = hash;
       }
       if (role) User.role = role;
-  
+      if (refreshToken) User.refreshToken = refreshToken;
+
       await User.save();
   
       response.status(200).json({ message: 'Usuario actualizado correctamente' });
     } catch (error) {
-      response.status(500).json(error);
+      response.status(500).json("there is a mistake"+error);
     }
   };
 

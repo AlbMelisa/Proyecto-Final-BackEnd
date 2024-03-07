@@ -15,12 +15,18 @@ const addClase = require('./router/claseRoute')
 const loginUser = require('./router/authRoute')
 const refreshToken = require('./router/refreshRoute')
 const handleLogout = require('./router/logoutRoute')
-const  deleteUser  = require('./router/userRoute')
+const deleteUser  = require('./router/userRoute')
 const updateUser = require('./router/userRoute')
 const addAlumnos = require('./router/claseRoute')
 const getClases = require('./router/claseRoute')
+const getPlan = require('./router/planRoute')
+const deletePlan = require('./router/planRoute')
+const deleteClase = require('./router/claseRoute')
+const updateClase = require('./router/claseRoute')
+const getFecha = require('./router/claseRoute')
+const updatePlan = require('./router/planRoute')
+const getUserPlan = require('./router/planRoute')
 const cookieParser = require('cookie-parser')
-const  getClases  = require('./controllers/clasesController')
 
 app.use(credentials)
 app.use(cors(corsOptions))
@@ -37,9 +43,19 @@ app.use('/',updateUser)
 //Clase
 app.use('/',addClase)
 app.use('/',getClases)
-app.use('/',getClases)
+app.use('/',deleteClase)
+app.use('/',updateClase)
+app.use('/',addAlumnos)
+app.use('/',getFecha)
+
+
 //Plan
 app.use('/',addUserPlan)
+app.use('/',getPlan)
+app.use('/',deletePlan)
+app.use('/',updatePlan)
+app.use('/',getUserPlan)
+
 
 //Productos
 app.use('/',addProducto)
