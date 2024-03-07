@@ -73,7 +73,7 @@ const updateUser = async (request, response) => {
       if (clave) {
         const saltRounds = 10;
         const salt = bcrypt.genSaltSync(saltRounds);
-        const hash = bcrypt.hashSync(password, salt);
+        const hash = bcrypt.hashSync(clave, salt);
         User.clave = hash;
       }
       if (role) User.role = role;
@@ -83,7 +83,7 @@ const updateUser = async (request, response) => {
   
       response.status(200).json({ message: 'Usuario actualizado correctamente' });
     } catch (error) {
-      response.status(500).json(error);
+      response.status(500).json("there is a mistake"+error);
     }
   };
 

@@ -23,7 +23,9 @@ const getPlan = require('./router/planRoute')
 const deletePlan = require('./router/planRoute')
 const deleteClase = require('./router/claseRoute')
 const updateClase = require('./router/claseRoute')
+const getFecha = require('./router/claseRoute')
 const updatePlan = require('./router/planRoute')
+const getUserPlan = require('./router/planRoute')
 const cookieParser = require('cookie-parser')
 
 app.use(credentials)
@@ -44,12 +46,16 @@ app.use('/',getClases)
 app.use('/',deleteClase)
 app.use('/',updateClase)
 app.use('/',addAlumnos)
+app.use('/',getFecha)
+
 
 //Plan
 app.use('/',addUserPlan)
 app.use('/',getPlan)
 app.use('/',deletePlan)
 app.use('/',updatePlan)
+app.use('/',getUserPlan)
+
 
 //Productos
 app.use('/',addProducto)

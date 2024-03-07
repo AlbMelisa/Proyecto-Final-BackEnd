@@ -40,7 +40,7 @@ const addAlumnos = async (request,response)=>{
     return response.status(200).json({ message: 'Alumnos agregados correctamente', clase });
   } catch (error) {
     console.error('Error al agregar alumnos a la clase:', error);
-    return response.status(500).json({ message: 'Error interno del servidor' });
+    return response.status(500).json({ message: 'Error interno del servidor'+error });
   }
 }
 const getClases = async (request,response) => {
@@ -90,10 +90,20 @@ const deleteClase = async (req, res) => {
 
       await clase.save();
   
-      response.status(200).json({ message: 'Clase actualizada correctamente' });
+      response.status(200).json({ message: 'Usuario actualizado correctamente', reload: true });
     } catch (error) {
       response.status(500).json(error);
     }
   };
+  const getFecha = async(request,response) => {
+    try {
+      const {fecha} = request.params;
+      const clase = await clases.find({ fecha: fecha });
 
-module.exports = { addClase , addAlumnos , getClases, deleteClase, updateClase}
+      response.status(200).json(clase);
+    } catch (error) {
+      response.status(500).json({ error: 'Error al obtener las clases.'});
+    }
+  }
+
+module.exports = { addClase , addAlumnos , getClases, deleteClase, updateClase , getFecha}

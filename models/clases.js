@@ -7,7 +7,8 @@ const clases = new Schema({
   fecha: String,
   hora: Number,
   alumnos: [{
-    nombre: String
+    nombre: String,
+    apellido:String
   }]
 })
 module.exports = model('clases',clases)

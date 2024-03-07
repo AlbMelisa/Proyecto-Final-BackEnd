@@ -14,7 +14,12 @@ const addUserPlan = async (request,response) => {
     infoTres,
     plan
    })
-  
+   const existingUser = await userPlan.findOne({ email });
+
+   if (existingUser) {
+     return response.status(400).json({ message: 'El usuario ya tiene un plan' });
+   }
+
    await newUserPlan.save()
    response.status(200).json({message:'Plan creado exitosamente'})
  } catch (error) {
@@ -63,15 +68,25 @@ const deletePlan = async (req, res) => {
       if (infoUno) UserPlan.infoUno = infoUno;
       if (infoDos) UserPlan.infoDos = infoDos;
       if (infoTres) UserPlan.infoTres = infoTres;
-      if (plan) UserPlan.plan = infoTres;
+      if (plan) UserPlan.plan = plan;
 
       await UserPlan.save();
   
-      response.status(200).json({ message: 'Clase actualizada correctamente' });
+      response.status(200).json({ message: 'Plan actualizado correctamente' });
     } catch (error) {
-      response.status(500).json(error);
+      response.status(500).json("el error es" + error);
     }
   };
+  const getUserPlan = async(req,res)=>{
+    const email = req.query.email;
+    try {
+      const UserPlan = await userPlan.findOne({ email });
+
+      res.status(200).json(UserPlan);
+    } catch (error) {
+      res.status(500).json({ message: 'El usuario no existe' });
+    }
+  }
 
 
-module.exports = { addUserPlan ,getPlan,deletePlan,updatePlan}
+module.exports = { addUserPlan ,getPlan,deletePlan,updatePlan,getUserPlan}

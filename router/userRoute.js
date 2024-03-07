@@ -15,6 +15,6 @@ addUser)
 
 route.get('/user',verifyToken,getAllUsers)
 route.delete('/user/:id',deleteUser)
-route.patch('/user/:id',updateUser)
+route.put('/user/:id',updateUser)
 
 module.exports = route
