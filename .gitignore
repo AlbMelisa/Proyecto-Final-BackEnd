@@ -1,6 +1,6 @@
-.env
 # Son las variables de entorno que utilizaremos en la aplicación, deben estar IGNORADAS.
 # Logs
+.env
 logs
 *.log
 npm-debug.log*
