@@ -12,6 +12,9 @@ const addUser = async(request,response) =>{
     if (existingUser) {
       return response.status(400).json({ message: 'El usuario ya existe' });
     }
+    if (!/^[a-zA-Z]+$/.test(nombre) || !/^[a-zA-Z]+$/.test(apellido)) {
+      return response.status(400).json({ error: "El nombre y el apellido solo deben contener letras." });
+    }
     const newUser = new user({
       nombre,
       apellido,
